@@ -55,6 +55,8 @@
     </div>
 
     <script>
+        console.log("Script started");
+        
         const allQuestions = [
             {
                 question: "Approximately how long is a flight from Manila to Palawan?",
@@ -333,7 +335,9 @@
             }
         ];
 
-        const totalQuestions = 20;
+        console.log("Questions loaded:", allQuestions.length);
+
+        const totalQuestions = Math.min(20, allQuestions.length);
         let questions = [];
         let currentQuestion = 0;
         let score = 0;
@@ -355,6 +359,7 @@
         }
 
         function initializeQuiz() {
+            console.log("Initializing quiz");
             shuffleArray(allQuestions);
             questions = allQuestions.slice(0, totalQuestions);
             currentQuestion = 0;
@@ -363,6 +368,7 @@
         }
 
         function loadQuestion() {
+            console.log("Loading question:", currentQuestion + 1);
             feedbackContainer.style.display = 'none';
             const question = questions[currentQuestion];
             questionEl.textContent = `Question ${currentQuestion + 1} of ${totalQuestions}: ${question.question}`;
@@ -376,6 +382,7 @@
         }
 
         function selectChoice(choice) {
+            console.log("Choice selected:", choice);
             const question = questions[currentQuestion];
             const isCorrect = choice === question.correctAnswer;
             
@@ -395,6 +402,7 @@
         }
 
         function nextQuestion() {
+            console.log("Moving to next question");
             currentQuestion++;
             if (currentQuestion < totalQuestions) {
                 loadQuestion();
@@ -404,6 +412,7 @@
         }
 
         function showResult() {
+            console.log("Showing result");
             document.getElementById('question-container').style.display = 'none';
             feedbackContainer.style.display = 'none';
             resultContainer.style.display = 'block';
@@ -420,6 +429,7 @@
         nextBtn.onclick = nextQuestion;
         shareBtn.onclick = shareOnFacebook;
 
+        console.log("Calling initializeQuiz");
         initializeQuiz();
     </script>
 </body>
