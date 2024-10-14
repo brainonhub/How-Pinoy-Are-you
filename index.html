@@ -53,17 +53,8 @@
         <p>Your score: <span id="score"></span>%</p>
         <button id="share-btn">Share on Facebook</button>
     </div>
-    <div id="debug-info"></div>
 
     <script>
-        console.log("Script started");
-        
-        const debugInfo = document.getElementById('debug-info');
-        function log(message) {
-            console.log(message);
-            debugInfo.innerHTML += message + '<br>';
-        }
-        
         const allQuestions = [
             {
                 question: "Approximately how long is a flight from Manila to Palawan?",
@@ -342,8 +333,6 @@
             }
         ];
 
-       log("Questions loaded: " + allQuestions.length);
-
         const totalQuestions = Math.min(20, allQuestions.length);
         let questions = [];
         let currentQuestion = 0;
@@ -366,7 +355,6 @@
         }
 
         function initializeQuiz() {
-            log("Initializing quiz");
             shuffleArray(allQuestions);
             questions = allQuestions.slice(0, totalQuestions);
             currentQuestion = 0;
@@ -375,7 +363,6 @@
         }
 
         function loadQuestion() {
-            log("Loading question: " + (currentQuestion + 1));
             feedbackContainer.style.display = 'none';
             const question = questions[currentQuestion];
             questionEl.textContent = `Question ${currentQuestion + 1} of ${totalQuestions}: ${question.question}`;
@@ -389,7 +376,6 @@
         }
 
         function selectChoice(choice) {
-            log("Choice selected: " + choice);
             const question = questions[currentQuestion];
             const isCorrect = choice === question.correctAnswer;
             
@@ -409,7 +395,6 @@
         }
 
         function nextQuestion() {
-            log("Moving to next question");
             currentQuestion++;
             if (currentQuestion < totalQuestions) {
                 loadQuestion();
@@ -419,7 +404,6 @@
         }
 
         function showResult() {
-            log("Showing result");
             document.getElementById('question-container').style.display = 'none';
             feedbackContainer.style.display = 'none';
             resultContainer.style.display = 'block';
@@ -436,7 +420,6 @@
         nextBtn.onclick = nextQuestion;
         shareBtn.onclick = shareOnFacebook;
 
-        log("Calling initializeQuiz");
         initializeQuiz();
     </script>
 </body>
