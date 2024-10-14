@@ -54,7 +54,6 @@
     </div>
     <div id="result-container" style="display:none;">
         <h2>Quiz Completed!</h2>
-        <p>Your score: <span id="score"></span>%</p>
         <img id="result-image" alt="Quiz Result">
         <button id="share-btn">Share on Facebook</button>
     </div>
@@ -430,13 +429,10 @@
             ctx.fillStyle = '#000000';
             ctx.font = 'bold 40px Arial';
             ctx.textAlign = 'center';
-            ctx.fillText('How Filipino Am I?', canvas.width / 2, 80);
+            ctx.fillText('How Filipino Am I?', canvas.width / 2, 100);
 
-            ctx.font = '30px Arial';
-            ctx.fillText(`Your score: ${scorePercentage}%`, canvas.width / 2, 200);
-
-            ctx.font = '20px Arial';
-            ctx.fillText('Take the quiz at [Your Website URL]', canvas.width / 2, 350);
+            ctx.font = 'bold 60px Arial';
+            ctx.fillText(`${scorePercentage}%`, canvas.width / 2, 250);
 
             // Convert canvas to image
             resultImage.src = canvas.toDataURL('image/jpeg');
