@@ -428,12 +428,16 @@
 
             // Add text
             ctx.fillStyle = '#000000';
-            ctx.font = 'bold 40px Arial';
             ctx.textAlign = 'center';
-            ctx.fillText('How Filipino Am I?', canvas.width / 2, 100);
+
+            ctx.font = 'bold 40px Arial';
+            ctx.fillText('How Filipino Am I?', canvas.width / 2, 80);
+
+            ctx.font = '30px Arial';
+            ctx.fillText('My knowledge of the Philippines is =', canvas.width / 2, 160);
 
             ctx.font = 'bold 60px Arial';
-            ctx.fillText(`${scorePercentage}%`, canvas.width / 2, 250);
+            ctx.fillText(`${scorePercentage}%`, canvas.width / 2, 260);
 
             // Convert canvas to image
             resultImage.src = canvas.toDataURL('image/jpeg');
@@ -441,7 +445,7 @@
 
         function shareOnFacebook() {
             const scorePercentage = ((score / totalQuestions) * 100).toFixed(2);
-            const scoreText = `How Filipino am I? ${scorePercentage}%`;
+            const scoreText = `How Filipino Am I? My knowledge of the Philippines is = ${scorePercentage}%`;
             const url = encodeURIComponent(window.location.href);
             window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${encodeURIComponent(scoreText)}`, '_blank');
         }
